@@ -26,7 +26,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int a, b, c,myKey;
+    int a, b, c, myKey;
     cin >> myKey;
     int arr[5];
     cin >> arr[1] >> arr[2] >> arr[3];
