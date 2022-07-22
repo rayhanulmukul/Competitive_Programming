@@ -26,21 +26,19 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int a, b, c, myKey;
-    cin >> myKey;
-    int arr[5];
-    cin >> arr[1] >> arr[2] >> arr[3];
-    set<int>keys;
+    int norB, preB, N, cost;
+    cin >> norB >> preB >> N >> cost;
+    int x = cost/preB;
+    int y = cost / norB;
     while(true){
-        if(myKey != 0){
-            keys.insert(myKey);
-            myKey = arr[myKey];
+        if(x == 0 && y == 0){
+            break;
         }
-        else break;
+        else if(x*preB <= cost && (N-x)*norB + x*preB > cost){
+            x--;
+        }
     }
-    if(keys.size() == 3) cout << "YES" << en;
-    else cout << "NO" << en;
-    
+    cout << y << " " << x << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
