@@ -26,25 +26,20 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int norB, preB, N, cost, x, y;
-    cin >> norB >> preB >> N >> cost;
-    x = cost/preB;
-    y = cost / norB;
-    while(true){
-        if(x == 0 || y == 0){
-            break;
-        }
-        else if(x*preB <= cost && (N-x)*norB + x*preB > cost){
-            x--;
-        }
-        else break;
+    int a, b, N;
+    cin >> a >> b >> N;
+    if(a == b || a%b == 0){
+        cout << -1 << en;
+        return;
     }
-    if(x >= N) cout << 0 << " " << N << en;
-    else if(y >= N){
-        cout << N-x << " " << x << en;
+    int x = ceil((N*1.0)/a);
+    for(int i = x; i <= x+1; i++){
+        if((i*a)%b != 0){
+            cout << i*a << en;
+            return;
+        }
     }
-    else cout << -1 << en;
-   // cout << y << " " << x << en;
+    cout << -1 << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);

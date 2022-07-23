@@ -25,26 +25,33 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define R0F(i,a) ROF(i,0,a)
 #define each(a,x) for (auto& a: x)
 
+int norB, preB, N, cost;
+
+int funct(int pQ){
+    if(pQ*preB + (N-pQ)*norB <= cost){
+        return 1;
+    }else return 0;
+}
+
 void solve(int tt){
-    int norB, preB, N, cost, x, y;
     cin >> norB >> preB >> N >> cost;
-    x = cost/preB;
-    y = cost / norB;
-    while(true){
-        if(x == 0 || y == 0){
-            break;
+    int low = 1, high = N, premQ = 0;
+    while (low <= high){
+        int mid = (low + high)/2;
+        if(funct(mid)){
+            premQ = mid;
+            low = mid + 1;
         }
-        else if(x*preB <= cost && (N-x)*norB + x*preB > cost){
-            x--;
+        else{
+            high = mid - 1;
         }
-        else break;
     }
-    if(x >= N) cout << 0 << " " << N << en;
-    else if(y >= N){
-        cout << N-x << " " << x << en;
+    if(norB*N > cost){
+        cout << -1 << en;
+    }else{
+        cout << N-premQ << " " << premQ << en;
     }
-    else cout << -1 << en;
-   // cout << y << " " << x << en;
+    
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
