@@ -25,13 +25,20 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define R0F(i,a) ROF(i,0,a)
 #define each(a,x) for (auto& a: x)
 
+
+int  sumOfValue(int n){
+       int sum = (n * (n + 1) * (2 * n + 4)) / 12 ;
+       return sum ;
+}
 void solve(int tt){
-    int a, b, c, d;
-    cin >> a >> b >> c >> d;
-    
-    if(c >= b) cout << 0 << en;
-    else if(b >= d) cout << d-c << en;
-    else cout << b-c << en;
+           int sum = 0 ;
+
+           for(int i = 1 ; i <= 3 ; i += 1){
+                  sum += sumOfValue(i) ;
+                  sum = sum * 2 ;
+
+           }
+           cout << sum << '\n' ;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
