@@ -24,14 +24,13 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define ROF(i,a,b) for (int i = (b)-1; i >= (a); --i)
 #define R0F(i,a) ROF(i,0,a)
 #define each(a,x) for (auto& a: x)
-char ch[100];
+
 void solve(int tt){
     int n;
     cin >> n;
-    int *p;
-    p = &n;
-    cout << (int)n << en;
-    cout << (int)*p << en;
+    F0R(i, n){
+        cout << i << " ";
+    }
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
