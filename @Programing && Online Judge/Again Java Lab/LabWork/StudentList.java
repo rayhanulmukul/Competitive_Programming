@@ -100,7 +100,6 @@ public class StudentList {
         BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(
                         new FileInputStream(Constant.StudentList)));
-        String Line = bufferedReader.readLine();
-        return Line;
+        return bufferedReader.readLine();
     }
 }

@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d201a54-dbdc-498e-b7b5-c0b0da91a7c0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/A" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/A" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/A.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/A.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/B" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/B" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/B.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/B.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/atcoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/atcoder.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/hello" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/hello" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/hello.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/hello.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../@Contest &amp;&amp; Codeforce/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StudentList.class" beforeDir="false" afterPath="$PROJECT_DIR$/StudentList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StudentList.java" beforeDir="false" afterPath="$PROJECT_DIR$/StudentList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/helloWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Team.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/students.txt" beforeDir="false" afterPath="$PROJECT_DIR$/students.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,12 +26,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AsLnpvQ7fiZBbYpsvw84YWswDM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

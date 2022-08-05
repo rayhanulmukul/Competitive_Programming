@@ -26,11 +26,14 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n;
-    cin >> n;
-    F0R(i, n){
-        cout << i << " ";
-    }
+    int a, b, c, k = 0;
+    cin >> a >> b >> c;
+    int d = min(min(a, b), min(c, b));
+    
+    if(a == b && a == d) cout << "YES" << en;
+    else if(b == c && b == d) cout << "YES" << en;
+    else if(c == a && c == d) cout << "YES" << en;
+    else cout << "NO" << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);

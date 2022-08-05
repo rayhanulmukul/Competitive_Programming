@@ -1,0 +1,1 @@
+time g++ -std=c++20 -Wall -Wextra -O2 -Wshadow -Wconversion -Wlogical-op -Wvla -Wno-char-subscripts -Wshift-overflow=2 -Wduplicated-cond -D_FORTIFY_SOURCE=2 -Wfloat-equal -DDEBUG $1.cpp -o $1 && echo "Successfully Compiled!" && time ./$1 < in
