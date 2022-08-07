@@ -26,35 +26,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n, m = -1, x = 0, ok = 0, y = -1;
-    cin >> n;
-    map <int, int> freq;
-    int arr[n];
-    F0R(i, n){
-        cin >> arr[i];
-        freq[arr[i]]++;
-    }
-    for(auto it : freq){
-        int k = it.first;
-        if(it.second > 1){
-            for(int i = 0; i < n; i++){
-                if(arr[i] == k){
-                    x = i+1;
-                    y = 0;
-                    it.second -= 1;
-                }
-                if(it.second == 1) break;
-            }
-        }
-        m = max(m, x);
-        //cout << m << " ";
-    }
-    m = max(m, y);
-
-    if(m == 1) cout << 1 << en;
-    else if(m == 0) cout << 0 << en;
-    else cout << m << en;
-    
+    cout << rng(1, 100) << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
@@ -63,8 +35,8 @@ int32_t main(){
     freopen("input.txt","r",stdin);
     //freopen("output.txt","w",stdout);
     #endif
-    int t = 1;
-    cin >> t;
+    int t = 100;
+    //cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);}
     return 0;
