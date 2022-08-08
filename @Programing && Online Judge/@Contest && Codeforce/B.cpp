@@ -26,24 +26,41 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n, x, y, ans = 0, m1 = 0, m2 = 0, m3 = 0, m4 = 0;
+    int n, ma = 0, ma1 = 0, ma2 = 0, ans = 0;
     cin >> n;
+    int arr[n];
     F0R(i, n){
-        cin >> x >> y;
-        if(x > 0){
-            m1 = max(m1, x);
+        cin >> arr[i];
+        ma = max(arr[i], ma);
+    }
+    if(n == 1){
+        cout << "YES" << en;
+        return;
+    }
+    for(int i = 1; i < n; i++){
+        if(arr[i-1] <= arr[i]){
+            ma1 = max(ma1, max(arr[i-1], arr[i]));
+            if(ma2 > 0){
+                ans += ma2;
+                ma2 = 0;
+            }
         }
-        else if(x < 0){
-            m2 = min(m2, x);
-        }
-        if(y > 0){
-            m3 = max(m3, y);
-        }
-        else if(y < 0){
-            m4 = min(m4, y);
+        else if(arr[i-1] >= arr[i]){
+            ma2 = max(ma1, max(arr[i-1], arr[i]));
+            if(ma1 > 0){
+                ans += ma1;
+                ma1 = 0;
+            }
         }
     }
-    ans += abs(m1)*2 + abs(m2)*2 + abs(m3)*2 + abs(m4)*2;
+    if(ma2 > 0){
+        ans += ma2;
+        ma2 = 0;
+    }
+    if(ma1 > 0){
+        ans += ma1;
+        ma1 = 0;
+    }
     cout << ans << en;
 }
 int32_t main(){
