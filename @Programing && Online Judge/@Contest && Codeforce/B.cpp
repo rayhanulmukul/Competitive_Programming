@@ -26,42 +26,49 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n, ma = 0, ma1 = 0, ma2 = 0, ans = 0;
+    int n;
     cin >> n;
-    int arr[n];
-    F0R(i, n){
-        cin >> arr[i];
-        ma = max(arr[i], ma);
-    }
-    if(n == 1){
-        cout << "YES" << en;
-        return;
-    }
-    for(int i = 1; i < n; i++){
-        if(arr[i-1] <= arr[i]){
-            ma1 = max(ma1, max(arr[i-1], arr[i]));
-            if(ma2 > 0){
-                ans += ma2;
-                ma2 = 0;
+    n--;
+    int x = sqrt(n);
+    int y = x*x;
+    //cout << y << "w" << en;
+    if(y == n){
+        for(int i = n; i >= 0; i--){
+            cout << i << " ";
+        }
+        cout << en;
+    }else{
+        int arr[n+5] = {0};
+        int k = n;
+        while (k > 0){
+            x = sqrt(k);
+            y = x*x;
+            if(y == k){
+                int m = k;
+                for(int i = 0; i < m; i++){
+                    arr[i] = k;
+                    k--;
+                }
+            }
+            else{
+                y = (x+1)*(x+1)-k;
+                int l = k;
+                if(y < 0){
+                    cout << -1 << en;
+                    return;
+                }
+                for(int i = y; i <= k; i++){
+                    arr[i] = l;
+                    l--;
+                }
+                k = l;
             }
         }
-        else if(arr[i-1] >= arr[i]){
-            ma2 = max(ma1, max(arr[i-1], arr[i]));
-            if(ma1 > 0){
-                ans += ma1;
-                ma1 = 0;
-            }
+        for(int i = 0; i <= n; i++){
+            cout << arr[i] << " ";
         }
+        cout << en;
     }
-    if(ma2 > 0){
-        ans += ma2;
-        ma2 = 0;
-    }
-    if(ma1 > 0){
-        ans += ma1;
-        ma1 = 0;
-    }
-    cout << ans << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
