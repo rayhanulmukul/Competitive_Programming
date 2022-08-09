@@ -26,13 +26,9 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    for(int i = 0; i < 10; i++){
-        cout << 5 << en;
-        for(int j = 0; j < 5; j++){
-            cout << rng(0, 5) << " ";
-        }
-        cout << en;
-    }
+    int n;
+    cin >> n;
+    cout << " " << n/3 << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
