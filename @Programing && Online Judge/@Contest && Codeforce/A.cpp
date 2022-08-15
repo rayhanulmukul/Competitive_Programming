@@ -54,6 +54,7 @@ void solve(int tt){
         s.insert(arr[i]);
     }
     cout << s.size() << en;
+    cout << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
