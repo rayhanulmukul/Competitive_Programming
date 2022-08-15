@@ -26,20 +26,34 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n;
+    int n, in = 0, x = 0;
     cin >> n;
-    int arr[n+5];
+    int arr[n];
     F0R(i, n){
-        arr[i] = i+1;
+        cin >> arr[i];
     }
-    cout << __LINE__ << " " << n << en;
-    for(int i = 0;i < n; i++){
-        for(int j = 0; j < n; j++){
-            cout << arr[j] << " ";
+    map <int , int> m;
+    set <int> s;
+    for(int i = n-1; i >= 0; i--){
+        if(arr[i] < arr[i-1] && i-1 >= 0){
+            in = i;
+            break;
         }
-        cout << en;
-        swap(arr[i], arr[i+1]);
     }
+    //cout << in << en;
+    for(int i = 0; i < in; i++){
+        s.insert(arr[i]);
+        m[arr[i]] = 1;
+    }
+    for(int i = in; i < n; i++){
+        if(m[arr[i]] == 1){
+            x = i;
+        }
+    }
+    for(int i = in; i < x; i++){
+        s.insert(arr[i]);
+    }
+    cout << s.size() << en;
 }
 int32_t main(){
     ios_base::sync_with_stdio(false);
