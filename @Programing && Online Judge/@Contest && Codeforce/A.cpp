@@ -26,46 +26,22 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n, in = 0, x = 0;
-    cin >> n;
-    int arr[n];
-    F0R(i, n){
-        cin >> arr[i];
-    }
-    map <int , int> m;
-    set <int> s;
-    for(int i = n-1; i >= 0; i--){
-        if(arr[i] < arr[i-1] && i-1 >= 0){
-            in = i;
-            break;
-        }
-    }
-    //cout << in << en;
-    for(int i = 0; i < in; i++){
-        s.insert(arr[i]);
-        m[arr[i]] = 1;
-    }
-    for(int i = in; i < n; i++){
-        if(m[arr[i]] == 1){
-            x = i;
-        }
-    }
-    for(int i = in; i < x; i++){
-        s.insert(arr[i]);
-    }
-    cout << s.size() << en;
-    cout << en;
+    string s; cin >> s;
+    int x, ans = 0; cin >> x;
+    string s1;
+
+    s1 += x + '0';
+    cout << s1 << en;
 }
 int32_t main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt","r",stdin);
-    //freopen("output.txt","w",stdout);
+    #ifndef DEBUG
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
     #endif
     int t = 1;
     cin >> t;
     for(int i = 1; i <= t; i++){
-        solve(i);}
+        solve(i);
+    }
     return 0;
 }
