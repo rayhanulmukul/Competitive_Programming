@@ -3,7 +3,7 @@
 using namespace std;
 
 #define ll long long int
-//#define int ll
+#define int ll
 #define ld long double
 #define pb push_back
 #define mp make_pair
@@ -26,71 +26,17 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    string s, s1, s2; cin >> s;
-    int x, ans = 0; cin >> x;
-    string Hours, Minutes, sMi0, sMi1, sHo0, sHo1;
-    int mi, ho, tem = 0;
-    Hours = s.substr(0, 2);
-    Minutes = s.substr(3, 2);
-    mi = x%60;
-    ho = x/60;
-    
-    //cout << sHo0<< " " << sHo1 << en;
-    int tmint = 0, thour = 0, k = 1, y = 0;
-    string FM0, FM1, FH0, FH1;
-    if(Hours[0] == Minutes[1] && Hours[1] == Minutes[0]){
-            ans++;
+    int n;
+    cin >> n;
+    int arr[n];
+    F0R(i, n){
+        cin >> arr[i];
     }
-    tmint = stoi(Minutes);
-    thour = stoi(Hours);
-    while(true){
-        tem = 0;
-        if(FH0 == FM1 && FH1 == FM0){
-            ans++;
-        }
-        FH0 = "";
-        FH1 = "";
-        FM0 = "";
-        FM1 = "";
-        tmint += mi;
-        thour += ho;
-        if(tmint > 59){
-            tmint -= 60;
-            thour++;
-            if(thour > 23){
-                thour -= 24;
-            }
-        }
-        if(thour > 23){
-            thour -= 24;
-        }
-        if(tmint > 9){
-            tem = tmint%10;
-            y = tmint/10;
-            FM0 += y + '0';
-            FM1 += tem + '0';
-        }else {
-            tem = 0;
-            FM0 += tem + '0';
-            FM1 += tmint + '0';
-        }
-        if(thour > 9){
-            tem = thour%10;
-            y = thour/10;
-            FH0 += y + '0';
-            FH1 += tem + '0';
-        }else{
-            tem = 0;
-            FH0 += tem + '0';
-            FH1 += thour + '0';
-        }
-        if(FH0[0] == s[0] && FH1[0] == s[1] && FM0[0] == s[3] && FM1[0] == s[4]){
-            cout << ans-1 << en;
+    for(int i = 0; i < n; i++){
+        if(arr[i] != i){
+            cout << i << en;
             return;
         }
-        // cout << FH0 << FH1 << ":" << FM0 << FM1 << en;
-        // cout << thour << " : " << tmint << en;
-        // k++;
     }
 }
 int32_t main(){

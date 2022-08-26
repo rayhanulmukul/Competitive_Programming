@@ -26,45 +26,61 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int a, b, x, sum1 = 0;
-    cin >> a >> b;
-    int arr[a];
-    int arr1[a];
-    F0R(i, a){
-        cin >> arr[i];
+    int n, m, ans = 0;
+    cin >> n >> m;
+    n--;
+    m--;
+    int x = n/2;
+    if(n%2 == 0){
+        if(x%2 == 0){
+            ans = 1;
+        }else ans = 2;
+    }else{
+        if(x%2 == 0){
+            ans = 1;
+        }else ans = 2;
     }
-    sort(arr, arr + a);
-    for(int i = a-1; i >= 0; i--){
-        sum1 += arr[i];
-        arr1[a-i-1] = sum1;
-    }
-    // F0R(i, a){
-    //     cout << arr1[i] << " ";
-    // }
-    // cout << en;
-    F0R(i, b){
-        int k, low = 0, high = a, mid = 0, ans = 0;
-        cin >> x;
-        while(low <= high){
-            mid = (low + high)/2;
-            if(arr1[mid] >= x){
-                ans = mid;
-                high = mid-1;
-            }else if(x >= arr1[mid]){
-                ans = mid;
-                low = mid + 1;
-            }
-            if(arr1[mid] == x){
-                break;
-            }
+
+    int y = m/3;
+    if(m%3 == 0){
+        if(ans == 2 && y%3 
+        .
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        = 0){
+            cout << "Tuzik" << en;
         }
-        ans++;
-        //cout << x << " " << ans << en;
-        if(ans > a){
-            cout << -1 << en;
-        }else if(arr1[ans-1] < x){
-            cout << ans+1 << en;
-        }else cout << ans << en;
+        else cout << "Vanya" << en;
+    }else{
+        if(ans == 2 && y%3 == 0){
+            cout << "Tuzik" << en;
+        }
+        else cout << "Vanya" << en;
     }
 }
 int32_t main(){
