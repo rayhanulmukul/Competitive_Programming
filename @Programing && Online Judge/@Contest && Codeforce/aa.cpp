@@ -26,62 +26,75 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n, m, ans = 0;
-    cin >> n >> m;
-    n--;
-    m--;
-    int x = n/2;
-    if(n%2 == 0){
-        if(x%2 == 0){
-            ans = 1;
-        }else ans = 2;
-    }else{
-        if(x%2 == 0){
-            ans = 1;
-        }else ans = 2;
+    int a, b, k = 0;
+    cin >> a >> b;
+    char arr[a][b];
+    F0R(i, a){
+        F0R(j, b){
+            cin >> arr[i][j];
+            if(arr[i][j] == '^'){
+                k = 1;
+            }
+        }
+    }
+    if(k == 0){
+        cout << "Case #" << tt << ": " << "Possible" << en;
+        F0R(i, a){
+            F0R(j, b){
+                cout << arr[i][j];
+            }
+            cout << en;
+        }
+        return;
+    }
+    if(k == 1){
+        F0R(i, a){
+            F0R(j, b){
+                if(arr[i][j] != '#' && arr[i][j] == '^'){
+                    if(j+1 < b && arr[i][j+1] != '#'){
+                        arr[i][j+1] = '^';
+                    }if(i+1 < a && arr[i+1][j] != '#'){
+                        arr[i+1][j] = '^';
+                    }if(j-1 >= 0 && arr[i][j-1] != '#'){
+                        arr[i][j-1] = '^';
+                    }if(i-1 >= 0 && arr[i-1][j] != '#'){
+                        arr[i-1][j] = '^';
+                    }
+                }
+            }
+        }
+    }
+    for(int i = 0; i < a; i++){
+        int c = 0;
+        for(int j = 0; j < b; j++){
+            c = 0;
+            if(arr[i][j] == '^'){
+                c++;
+                if(j+1 < b && arr[i][j+1] == '^'){
+                    c++;
+                }if(i+1 < a && arr[i+1][j] == '^'){
+                    c++;
+                }if(j-1 >= 0 && arr[i][j-1] == '^'){
+                    c++;
+                }if(i-1 >= 0 && arr[i-1][j] == '^'){
+                    c++;
+                }
+                if(c < 2){
+                    cout << "Case #" << tt << ": " << "Impossible" << en;
+                    return;
+                }
+            }
+        }
+        cout << c << en;
+    }
+    cout << "Case #" << tt << ": " << "Possible" << en;
+    F0R(i, a){
+        F0R(j, b){
+            cout << arr[i][j];
+        }
+        cout << en;
     }
 
-    int y = m/3;
-    if(m%3 == 0){
-        if(ans == 2 && y%3 
-        .
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        = 0){
-            cout << "Tuzik" << en;
-        }
-        else cout << "Vanya" << en;
-    }else{
-        if(ans == 2 && y%3 == 0){
-            cout << "Tuzik" << en;
-        }
-        else cout << "Vanya" << en;
-    }
 }
 int32_t main(){
     #ifndef DEBUG

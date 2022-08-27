@@ -26,18 +26,126 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n;
-    cin >> n;
-    int arr[n];
-    F0R(i, n){
-        cin >> arr[i];
-    }
-    for(int i = 0; i < n; i++){
-        if(arr[i] != i){
-            cout << i << en;
-            return;
+    int a, b, k = 0;
+    cin >> a >> b;
+    char arr[a][b];
+    char arr1[a][b];
+    F0R(i, a){
+        F0R(j, b){
+            cin >> arr[i][j];
+            arr1[i][j] = arr[i][j];
+            if(arr[i][j] == '^'){
+                k = 1;
+            }
         }
     }
+    if(k == 1){
+        F0R(i, a){
+            F0R(j, b){
+                if(arr[i][j] != '#' && arr[i][j] == '^'){
+                    if(j+1 < b && arr[i][j+1] != '#'){
+                        arr[i][j+1] = '^';
+                    }if(i+1 < a && arr[i+1][j] != '#'){
+                        arr[i+1][j] = '^';
+                    }if(j-1 >= 0 && arr[i][j-1] != '#'){
+                        arr[i][j-1] = '^';
+                    }if(i-1 >= 0 && arr[i-1][j] != '#'){
+                        arr[i-1][j] = '^';
+                    }
+                }
+            }
+        }
+    }
+    else if(k == 0){
+        cout << "Case #" << tt << ": " << "Possible" << en;
+        F0R(i, a){
+            F0R(j, b){
+                cout << arr[i][j];
+            }
+            cout << en;
+        }
+        return;
+    }
+    F0R(i, a){
+        F0R(j, b){
+            if(arr[i][j] == '.'){
+                if(j+1 < b && arr[i][j+1] == '^'){
+                    arr[i][j] = '^';
+                }if(i+1 < a && arr[i+1][j] == '^'){
+                    arr[i][j] = '^';
+                }if(j-1 >= 0 && arr[i][j-1] == '^'){
+                    arr[i][j] = '^';
+                }if(i-1 >= 0 && arr[i-1][j] == '^'){
+                    arr[i][j] = '^';
+                }
+            }
+        }
+    }
+    F0R(i, a){
+        F0R(j, b){
+            if(arr[i][j] == '.'){
+                if(j+1 < b && arr[i][j+1] == '^'){
+                    arr[i][j] = '^';
+                }if(i+1 < a && arr[i+1][j] == '^'){
+                    arr[i][j] = '^';
+                }if(j-1 >= 0 && arr[i][j-1] == '^'){
+                    arr[i][j] = '^';
+                }if(i-1 >= 0 && arr[i-1][j] == '^'){
+                    arr[i][j] = '^';
+                }
+            }
+        }
+    }
+    
+    for(int i = 0; i < a; i++){
+        for(int j = 0; j < b; j++){
+            int c = 0;
+            if(arr[i][j] == '^'){
+                if(j+1 < b && arr[i][j+1] == '^'){
+                    c++;
+                }if(i+1 < a && arr[i+1][j] == '^'){
+                    c++;
+                }if(j-1 >= 0 && arr[i][j-1] == '^'){
+                    c++;
+                }if(i-1 >= 0 && arr[i-1][j] == '^'){
+                    c++;
+                }
+                if(c < 2){
+                    if(arr[i][j] != arr1[i][j]){
+                        arr[i][j] = '.';
+                    }
+                }
+            }
+        }
+    }
+    for(int i = 0; i < a; i++){
+        for(int j = 0; j < b; j++){
+            int c = 0;
+            if(arr[i][j] == '^'){
+                if(j+1 < b && arr[i][j+1] == '^'){
+                    c++;
+                }if(i+1 < a && arr[i+1][j] == '^'){
+                    c++;
+                }if(j-1 >= 0 && arr[i][j-1] == '^'){
+                    c++;
+                }if(i-1 >= 0 && arr[i-1][j] == '^'){
+                    c++;
+                }
+                if(c < 2){
+                    cout << "Case #" << tt << ": " << "Impossible" << en;
+                    return;
+                }
+            }
+        }
+    }
+    cout << "Case #" << tt << ": " << "Possible" << en;
+    F0R(i, a){
+        F0R(j, b){
+            cout << arr[i][j];
+        }
+        cout << en;
+    }
+
 }
 int32_t main(){
     #ifndef DEBUG
