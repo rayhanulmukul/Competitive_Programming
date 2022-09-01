@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #include<vector>
 using namespace std;
@@ -27,7 +26,14 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    cout << MOD << en;
+    int n , m, c = 0;
+    cin >> n >> m;
+    int arr[n];
+    F0R(i, n){
+        arr[i] = i;
+    }
+    int x = m%n;
+    cout << arr[x] << en;
 }
 int32_t main(){
     #ifndef DEBUG
@@ -35,7 +41,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
