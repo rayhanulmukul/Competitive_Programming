@@ -26,14 +26,32 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n , m, c = 0;
-    cin >> n >> m;
-    int arr[n];
-    F0R(i, n){
-        arr[i] = i;
+    int n, ans = 0;
+    cin >> n;
+    int x = (n+1)/2;
+    //cout << x << " X : ";
+    int k = n-x;
+    int tem = k;
+    while (1){
+        if(k+k == x) k--;
+        int ok = 0, m = 1;
+        //cout << "K : " << k << " ";
+        for(int i = k; i >= 0; i--){
+            if((i+m) == tem){
+                ans++;
+                m++;
+            }else break;
+            //lcout << ans << " ";
+        }
+        k--;
+        if(k*2 < x) break;
     }
-    int x = m%n;
-    cout << arr[x] << en;
+    if(n > 3 && n%3 == 0){
+        cout << ans-1 << en;
+        return;
+    }
+    cout << ans << en;
+    
 }
 int32_t main(){
     #ifndef DEBUG
@@ -41,7 +59,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    //cin >> t;
+    cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
