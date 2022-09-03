@@ -25,43 +25,29 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define R0F(i,a) ROF(i,0,a)
 #define each(a,x) for (auto& a: x)
 
-void solve(int tt){
-    int n, ans = 0;
-    cin >> n;
-    int x = (n+1)/2;
-    //cout << x << " X : ";
-    int k = n-x;
-    int tem = k;
-    while (1){
-        if(k+k == x) k--;
-        int ok = 0, m = 1;
-        //cout << "K : " << k << " ";
-        for(int i = k; i >= 0; i--){
-            if((i+m) == tem){
-                ans++;
-                m++;
-            }else break;
-            //lcout << ans << " ";
-        }
-        k--;
-        if(k*2 < x) break;
-    }
-    if(n > 3 && n%3 == 0){
-        cout << ans-1 << en;
-        return;
-    }
-    cout << ans << en;
-    
-}
 int32_t main(){
     #ifndef DEBUG
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
     #endif
-    int t = 1;
-    cin >> t;
-    for(int i = 1; i <= t; i++){
-        solve(i);
+    //int t = 1;
+    //cin >> t;
+    int a, b;
+    cin >> a >> b;
+    while (1){
+        if(b == 0){
+            break;
+        }
+        if(a == 0){
+            float m = 0.0;
+            cout << fixed << setprecision(4) << m << en;
+        }
+        else{
+            double x = a/(2*1.0);
+            x /= 2;
+            cout << fixed << setprecision(4) << a+b-x << en;
+        }
+        cin >> a >> b;
     }
     return 0;
 }
