@@ -26,57 +26,29 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    string s;
-    cin >> s;
-    int x = s.size();
-    map <int, vector <int> > m;
-    vector <int > v;
-    int a = 0, b = 0, c = 0;
-    int y = s[0] - 'a'+1;
-    int y1 = s[x-1] - 'a'+1;
-
-    if(y <= y1) a = 1;
-    else if(y >= y1) b = 1;
-    for(int  i = 0; i < x; i++){
-        int x = s[i] - 'a'+1;
-        if(a == 1 && y <= x && x <= y1) {
-            m[x].push_back(i+1);
-            v.push_back(x);
-            c++;
-        }
-        else if(b == 1 && y >= x && x >= y1) {
-            m[x].push_back(i+1);
-            v.push_back(x);
-            c++;
-        }
-
+    int n, k, odd = 0, even = 0, ma = 0, sum = 0, mi = 0;
+    cin >> n >> k;
+    int arr[n];
+    set <int> s;
+    F0R(i, n){
+        cin >> arr[i];
+        s.insert(arr[i]);
     }
-    int ans = 0;
-    sort(v.begin(), v.end());
-    for(int i = 1; i < v.size(); i++){
-        ans += abs(v[i]-v[i-1]);
-       // cout << v[i] << " ";
+    for(auto& it:s){
+        if(it%2 != 0) odd++;
+        else even++;
     }
-    //cout << en;
-    cout << ans << " " << c << " " << en;
-
-    if(y > y1){
-        for(auto it = prev(m.end());; it--){
-            for(auto i : it-> second){
-                cout << i << " ";
-            }
-            if(it == m.begin()) break;
-        }
-        cout << en;
+    //int s = 0;
+    //s = odd + even;
+    // int m = 0;
+    ma = min(odd, even);
+    mi = max(odd, even);
+    sum = mi - ma;
+    int ans2 = sum + ma;
+    if(ans2 == k){
+        cout << "YES" << en;
     }
-    else{
-        for(auto it = m.begin(); it != m.end(); it++){
-            for(auto i : it-> second){
-                cout << i << " ";
-            }
-        }
-        cout << en;
-    }
+    else cout << "NO" << en;
 }
 int32_t main(){
     #ifndef DEBUG

@@ -26,49 +26,7 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    string s;
-    cin >> s;
-    int x = s.size();
-    map <int, vector <int> > m;
-    vector <int > v;
-    int a = 0, b = 0, c = 0;
-    int y = s[0] - 'a'+1;
-    int y1 = s[x-1] - 'a'+1;
-
-    if(y <= y1) a = 1;
-    if(y >= y1) b = 1;
-    if(tt == 54){
-        cout << s << en;
-        return;
-    }
-    for(int  i = 0; i < x; i++){
-        int x = s[i] - 'a'+1;
-        if(a == 1 && y <= x && x <= y1) {
-            m[x].push_back(i+1);
-            v.push_back(x);
-            c++;
-        }
-        else if(b == 1 && y >= x && x >= y1) {
-            m[x].push_back(i+1);
-            v.push_back(x);
-            c++;
-        }
-
-    }
-    int ans = 0;
-    sort(v.begin(), v.end());
-    for(int i = 1; i < v.size(); i++){
-        ans += abs(v[i]-v[i-1]);
-       // cout << v[i] << " ";
-    }
-    //cout << en;
-    cout << ans << " " << c << " " << en;
-    for(auto it = prev(m.end());; it--){
-        for(auto i : it-> second){
-            cout << i << en;
-        }
-        if(it == m.begin()) break;
-    }
+    
 }
 int32_t main(){
     #ifndef DEBUG
