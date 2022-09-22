@@ -26,29 +26,29 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define each(a,x) for (auto& a: x)
 
 void solve(int tt){
-    int n, k, odd = 0, even = 0, ma = 0, sum = 0, mi = 0;
-    cin >> n >> k;
-    int arr[n];
-    set <int> s;
-    F0R(i, n){
-        cin >> arr[i];
-        s.insert(arr[i]);
+    int n, x, y;
+    cin >> n >> x >> y;
+    if((x != 0 && y != 0) || (x == 0 && y == 0)){
+        cout << -1 << en;
+        return;
     }
-    for(auto& it:s){
-        if(it%2 != 0) odd++;
-        else even++;
+    int k = x + y;
+    int m = n-1;
+    int mod = m%k;
+    //cout << mod << " ";
+    if(mod == 0){
+        int co = 1, pr = 2;
+        for(int i = 0; i < m; i++){
+            cout << pr << " ";
+            if((i+1)%k == 0 && pr+k <= m+1){
+                pr += k;
+                co = 1;
+               // cout << "YES";
+            }
+        }
+        cout << en;
     }
-    //int s = 0;
-    //s = odd + even;
-    // int m = 0;
-    ma = min(odd, even);
-    mi = max(odd, even);
-    sum = mi - ma;
-    int ans2 = sum + ma;
-    if(ans2 == k){
-        cout << "YES" << en;
-    }
-    else cout << "NO" << en;
+    else cout << -1 << en;
 }
 int32_t main(){
     #ifndef DEBUG
