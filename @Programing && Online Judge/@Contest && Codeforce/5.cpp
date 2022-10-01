@@ -29,48 +29,10 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, k = 0;
-    cin >> n;
-    int arr[n];
-    map <int, int> m;
-    if(n == 1){
-        cout << 0 << en;
-        return;
+    int n = 100;
+    for(int i = 0; i <= 255; i++){
+        cout << i << en;
     }
-    F0R(i, n){
-        cin >> arr[i];
-        m[arr[i]]++;
-    }
-    int value = 1, ind = 0;
-    sort(arr, arr + n);
-    for(int i = 0;i < n; i++){
-        //cout << arr[ind] << " " << n << en;
-        if(arr[ind] == value){
-            k++; 
-            value++;
-            ind++;
-        }else{
-            n -= 2;
-            k++;
-            value++;
-        }
-        
-    }
-    //cout << k << n-ind << en;
-
-    int x = k + (n-ind)/2;
-    int y = (n-ind)%2;
-    //cout << x << " "<<en;
-    if(y == 1){
-        for(auto it:m){
-            if(x+1 == it.first){
-                x++;
-                break;
-            }
-        }
-        cout << x << en;
-    }
-    else cout << x << en;
 }
 int32_t main(){
     #ifndef DEBUG
