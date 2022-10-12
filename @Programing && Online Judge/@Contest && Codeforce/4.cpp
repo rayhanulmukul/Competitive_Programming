@@ -29,48 +29,31 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, k = 0;
+    int n;
     cin >> n;
-    int arr[n];
-    map <int, int> m;
-    if(n == 1){
-        cout << 0 << en;
-        return;
-    }
-    F0R(i, n){
-        cin >> arr[i];
-        m[arr[i]]++;
-    }
-    int value = 1, ind = 0;
-    sort(arr, arr + n);
-    for(int i = 0;i < n; i++){
-        //cout << arr[ind] << " " << n << en;
-        if(arr[ind] == value){
-            k++; 
-            value++;
-            ind++;
-        }else{
-            n -= 2;
-            k++;
-            value++;
-        }
-        
-    }
-    //cout << k << n-ind << en;
-
-    int x = k + (n-ind)/2;
-    int y = (n-ind)%2;
-    //cout << x << " "<<en;
-    if(y == 1){
-        for(auto it:m){
-            if(x+1 == it.first){
-                x++;
-                break;
+    string s, t;
+    cin >> s;
+    t = "";
+    int i = 0, x = 0, y = n-1;
+    while(i < n){
+        if(i%2 == 0){
+            if(s[x] == '0'){
+                t= s[x] + t;
             }
+            else t += s[x];
+            //cout << "First " << s[x] << " " << t << en;
+            x++;
         }
-        cout << x << en;
+        else{
+            if(s[y] == '0'){
+                t += s[y];
+            }else t = s[y] + t;
+            //cout << "last " << s[n-i-1] << " " << t << en;
+            y--;
+        }
+        i++;
     }
-    else cout << x << en;
+    cout << t << en;
 }
 int32_t main(){
     #ifndef DEBUG
@@ -78,7 +61,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    //cin >> t;
+    cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }

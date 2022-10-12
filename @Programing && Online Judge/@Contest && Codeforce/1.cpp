@@ -3,7 +3,7 @@
 using namespace std;
 
 #define ll long long int
-//#define int ll
+#define int ll
 #define ld long double
 #define pb push_back
 #define mp make_pair
@@ -28,51 +28,37 @@ const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
-vector < pair <ll, ll > > v[N];
-bool vis[N];
-vector < ll > ans;
-
-ll dis[N];
-ll mx = 0;
-
-void dfs(ll node, ll dist){
-    if(vis[node] == 1) return;
-    ans.push_back(node); // somehow connected to node a
-    vis[node] = 1;
-    mx = max(mx, dist);
-    dis[node] = dist;
-    for(auto [u, w] : v[node]){
-        dfs(u, dist + w);
-    }
-    return;
-}
 void solve(int tt){
-    ll n; // n = node count, m = edge count
+    int n, count = 0, k1 = 0, j = 0;
     cin >> n;
-    mem(vis, 0); // vis[i] = 0
-    for(int i = 0; i < n; i++){
-        ll x, y, w;
-        cin >> x >> y >> w; // input edges
-        v[x].push_back({y, w});
-        v[y].push_back({x, w});
+    int arr[n];
+    int sum = 0;
+    F0R(i, n){
+        cin >> arr[i];
+        sum += arr[i];
     }
-
-    dfs(0, 0);
-    
-    ll nxt_node;
-
-    for(ll i = 0; i < n; i++){
-        if(dis[i] == mx){
-            nxt_node = i;
-            break;
+    int x = 0;
+    for(int i = 0; i < n; i++){
+        x += arr[i];
+        int y = 0;
+        //cout << x << " ";
+        for(j = i+1; j < n; j++){
+            y += arr[j];
+            if(x == y){ 
+                count++;
+                y = 0;
+            }
+            if(y > x){
+                k1 = 1;
+                break;
+            }
+        }
+        if(j >= n-1){
+            cout << count << en;
+            return;
         }
     }
-    for(ll i = 0; i < n; i++) vis[i] = 0;
-    mx = 0;
-
-    dfs(nxt_node, 0);
-
-    cout << mx << en;
+    cout << count << en;
 }
 int32_t main(){
     #ifndef DEBUG
