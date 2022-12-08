@@ -29,37 +29,7 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, m;
-    cin >> n >> m;
-    vector < vector < pair<int, int >>> v(n);
-    for(int i = 0; i < m; i++){
-        int a, b, w; cin >> a >> b >> w;
-        a--, b--;
-        v[a].push_back({b, w});
-    }
-    vector <long long> dis(n, 1e18);
-    vector <bool> visit(n, false);
-    priority_queue<datatype>pq;
-    priority_queue < datatype, vector <datatype> , greater <datatype>> pq;
-
-    sort(visit.begin(), visit.end(), greater<datatype>());
-    int st = 0;
-    pq.push({0, st});
-    dis[st] = 0;
-
-    while(!pq.empty()){
-        int nd = pq.top().second;
-        pq.pop();
-        if(visit[nd]) continue;
-        visit[nd] = true;
-        for(auto [x, w] : v[nd]){
-            if(dis[nd] + w < dis[x]){
-                dis[x] = dis[nd] + w;
-                pq.push({dis[x], x});
-            }
-        }
-    }
-    for(auto x : dis) cout << x << " "; cout << en;
+    
 }
 int32_t main(){
     #ifndef DEBUG
