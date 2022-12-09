@@ -1,1 +1,2 @@
-0
+
+    for(auto it:s){

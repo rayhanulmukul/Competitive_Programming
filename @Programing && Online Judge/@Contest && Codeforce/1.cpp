@@ -29,36 +29,45 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, count = 0, k1 = 0, j = 0;
+    int n;
     cin >> n;
+    int ans = 0, three = 0, two = 0, one = 0;
     int arr[n];
-    int sum = 0;
     F0R(i, n){
         cin >> arr[i];
-        sum += arr[i];
+        if(arr[i] == 4) ans++;
+        else if(arr[i] == 3) three++;
+        else if(arr[i] == 2) two++;
+        else one++;
     }
-    int x = 0;
-    for(int i = 0; i < n; i++){
-        x += arr[i];
-        int y = 0;
-        //cout << x << " ";
-        for(j = i+1; j < n; j++){
-            y += arr[j];
-            if(x == y){ 
-                count++;
-                y = 0;
-            }
-            if(y > x){
-                k1 = 1;
-                break;
-            }
-        }
-        if(j >= n-1){
-            cout << count << en;
-            return;
-        }
+    if(one >= three){
+        ans+= three;
+        one -= three;
     }
-    cout << count << en;
+    else{
+        ans += one;
+        ans += (three-one);
+        one = 0;
+    }
+    ans += two/2;
+    two %= 2;
+    ans += one/4;
+    one %= 4;
+
+    int x = one/2;
+    if(x >= two){
+        ans += two;
+        x -= two;
+        if(one % 2 != 0) x++;
+        if(x > 0) ans++;
+    }
+    else{
+        ans += x;
+        two -= x;
+        if(two > 0) ans++;
+    }
+    cout << ans << en;
+
 }
 int32_t main(){
     #ifndef DEBUG
@@ -66,7 +75,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
