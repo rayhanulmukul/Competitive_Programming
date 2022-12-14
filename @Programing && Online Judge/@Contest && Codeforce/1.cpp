@@ -29,45 +29,21 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n;
+    int n, x, count = 0, ma = 0;
     cin >> n;
-    int ans = 0, three = 0, two = 0, one = 0;
-    int arr[n];
-    F0R(i, n){
-        cin >> arr[i];
-        if(arr[i] == 4) ans++;
-        else if(arr[i] == 3) three++;
-        else if(arr[i] == 2) two++;
-        else one++;
+    map <int, int> m;
+    for(int i = 0; i < n*2; i++){
+        cin >> x;
+        if(m[x] == 0){
+            count++;
+            m[x] = 1;
+        }
+        else{
+            ma = max(ma, count);
+            count--;
+        }
     }
-    if(one >= three){
-        ans+= three;
-        one -= three;
-    }
-    else{
-        ans += one;
-        ans += (three-one);
-        one = 0;
-    }
-    ans += two/2;
-    two %= 2;
-    ans += one/4;
-    one %= 4;
-
-    int x = one/2;
-    if(x >= two){
-        ans += two;
-        x -= two;
-        if(one % 2 != 0) x++;
-        if(x > 0) ans++;
-    }
-    else{
-        ans += x;
-        two -= x;
-        if(two > 0) ans++;
-    }
-    cout << ans << en;
-
+    cout << ma << en;
 }
 int32_t main(){
     #ifndef DEBUG
