@@ -28,17 +28,36 @@ const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
-int dp[105];
-int f(int n){
-    if(n == 0) return 0;
-    if(n == 1) return 1;
-    if(dp[n] >= 0) return dp[n];
-    dp[n] = f(n-1) + f(n-2);
-    return dp[n];
-}
 void solve(int tt){
-    for(int i = 0; i < 105; i++) dp[i] = -1;
-    cout << f(7) << en;
+    int n, h;
+    cin >> n >> h;
+    int health[n];
+    int pow[n];
+    F0R(i, n){
+        cin >> health[i];
+    }
+    F0R(i, n){
+        cin >> pow[i];
+    }
+    while(1){
+        int mi = INT_MAX;
+       cout << h << " he : ";
+        for(int i = 0; i < n; i++){
+            health[i] -= h;
+            if(health[i] > 0) mi = min(pow[i], mi);
+            else health[i] = 0;
+            cout << health[i] << " ";
+        }
+        cout << en;
+        if(h - mi < 0 or health[n-1] < 0) break;
+        else h -= mi;
+        //cout << h << " ";
+    }
+    if(health[n-1] > h){
+        cout << "NO" << en;
+    }
+    else cout << "YES" << en;
+    //cout << health[n-1] << " h " << h << en;
 }
 int32_t main(){
     #ifndef DEBUG

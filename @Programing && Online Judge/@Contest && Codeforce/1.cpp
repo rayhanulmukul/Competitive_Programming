@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include<vector>
 using namespace std;
-
+ 
 #define ll long long int
 #define int ll
 #define ld long double
@@ -27,23 +27,37 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
-
+ 
 void solve(int tt){
-    int n, x, count = 0, ma = 0;
+    int n, ans = 1, x, y, mam = 0, m, mi = 0, ma = 0;
     cin >> n;
-    map <int, int> m;
-    for(int i = 0; i < n*2; i++){
-        cin >> x;
-        if(m[x] == 0){
-            count++;
-            m[x] = 1;
-        }
-        else{
-            ma = max(ma, count);
-            count--;
+    vector<pair<int, int>> v;
+    for(int i = 0; i < n; i++){
+        cin >> x >> y;
+        v.push_back(make_pair(x, y));
+        m = abs(x-y);
+        if(mam < m){
+            mam = m;
+            mi = min(x, y);
+            ma = max(x, y);
         }
     }
-    cout << ma << en;
+    cout << mi << " " << ma;
+    // sort(v.begin(), v.end());
+    // int k = v.size();
+    // for(int j = 0; j < k; j++){
+    //     int m1 = v[j].first, c = 0;
+    //     for(int i = j; i < k; i++){
+    //         if(m1 >= v[i].second && m1 <= v[i].first){
+    //             c++;
+    //         }
+    //         //cout << c << " ";
+    //     }
+    //    // cout << en;
+    //     ans = max(ans, c);
+    // }
+    //cout << c << " " << ans << en;
+    //cout << ans << en;
 }
 int32_t main(){
     #ifndef DEBUG

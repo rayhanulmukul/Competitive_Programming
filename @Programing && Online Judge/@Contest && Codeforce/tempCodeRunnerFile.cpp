@@ -1,2 +1,1 @@
-
-    for(auto it:s){
+arr[i] or arr[j]
