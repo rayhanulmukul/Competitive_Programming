@@ -19,45 +19,60 @@ using namespace std;
  
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define rng(x,y) uniform_int_distribution<int>(x,y)(rng)
-#define FOR(i,a,b) for (int i = (a); i < (b); ++i)
-#define F0R(i,a) FOR(i,0,a)
-#define ROF(i,a,b) for (int i = (b)-1; i >= (a); --i)
-#define R0F(i,a) ROF(i,0,a)
+#define F0R(i,a,b) for (int i = (a); i < (b); ++i)
+#define FOR(i,a) F0R(i,0,a)
+#define R0F(i,a,b) for (int i = (b)-1; i >= (a); --i)
+#define ROF(i,a) R0F(i,0,a)
 #define each(a,x) for (auto& a: x)
 const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, h;
-    cin >> n >> h;
-    int health[n];
-    int pow[n];
-    F0R(i, n){
-        cin >> health[i];
-    }
-    F0R(i, n){
-        cin >> pow[i];
-    }
-    while(1){
-        int mi = INT_MAX;
-       cout << h << " he : ";
-        for(int i = 0; i < n; i++){
-            health[i] -= h;
-            if(health[i] > 0) mi = min(pow[i], mi);
-            else health[i] = 0;
-            cout << health[i] << " ";
-        }
-        cout << en;
-        if(h - mi < 0 or health[n-1] < 0) break;
-        else h -= mi;
-        //cout << h << " ";
-    }
-    if(health[n-1] > h){
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int x = s[s.size()-1] - '0';
+    if(x%2 == 0){
         cout << "NO" << en;
+        return;
     }
-    else cout << "YES" << en;
-    //cout << health[n-1] << " h " << h << en;
+    int y = 0, var;
+    x = 0;
+    int arr[n];
+    int brr[n];
+
+    for(int i = 0; i < n; i++){
+        var = s[i] - '0';
+        x += var;
+        arr[i] = var;
+    }
+    for(int i = n; i < 2*n; i++){
+        var = s[i] - '0';
+        y += var;
+        brr[i-n] = var;
+    }
+    if(x == y){
+        cout << "NO" << en;
+        return;
+    }
+    sort(arr, arr + n);
+    sort(brr, brr + n);
+    int c1 = 0, c = 0;
+    for(int i = 0; i < n; i ++){
+        if(arr[i] > brr[i]){
+            c++;
+        }
+        else if(arr[i] < brr[i]){
+            c1++;
+        }
+    }
+    if(c == n || c1 == n){
+        cout << "YES" << en;
+    }
+    else cout << "NO" << en;
+
 }
 int32_t main(){
     #ifndef DEBUG
@@ -65,7 +80,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }

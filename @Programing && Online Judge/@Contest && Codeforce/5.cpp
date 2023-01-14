@@ -19,20 +19,63 @@ using namespace std;
  
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define rng(x,y) uniform_int_distribution<int>(x,y)(rng)
-#define FOR(i,a,b) for (int i = (a); i < (b); ++i)
-#define F0R(i,a) FOR(i,0,a)
-#define ROF(i,a,b) for (int i = (b)-1; i >= (a); --i)
-#define R0F(i,a) ROF(i,0,a)
+#define F0R(i,a,b) for (int i = (a); i < (b); ++i)
+#define FOR(i,a) F0R(i,0,a)
+#define R0F(i,a,b) for (int i = (b)-1; i >= (a); --i)
+#define ROF(i,a) R0F(i,0,a)
 #define each(a,x) for (auto& a: x)
 const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n = 100;
-    for(int i = 0; i <= 255; i++){
-        cout << i << en;
+    int n, x;
+    cin >> n;
+    int one = 0, two = 0, first = 0,second = 0, k, l;
+    vector <int> v1;
+    vector <int> v2;
+    FOR(i, n){
+        cin >> x;
+        if(x < 0){
+            two += x;
+            v1.push_back(abs(x));
+            k = x;
+        }
+        else{
+            one += x;
+            v2.push_back(x);
+            k = x;
+        }
     }
+    sort(v1.begin(), v1.end());
+    sort(v2.begin(), v2.end());
+
+    if(one == abs(two)){
+        int to = abs(k)*(n/2);
+        if(to == one){
+            if(k < 0) cout << "second" << en;
+            else cout << "first" << en; 
+        }
+        else{
+            for(int i = 0; i < max(v1.size(), v2.size()); i++){
+                if(v1[i] > v2[i]){
+                    cout << "second" << en;
+                    return;
+                }
+                else{
+                    cout << "first" << en;
+                    return;
+                }
+            }
+            
+        }
+    }
+    else if(one > abs(two)){
+        cout << "first" << en;
+    }
+    else cout << "second" << en;
+    
+   // cout << one << " " << abs(two) << en;
 }
 int32_t main(){
     #ifndef DEBUG

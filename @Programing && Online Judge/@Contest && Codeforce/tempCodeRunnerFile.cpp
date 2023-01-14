@@ -1,1 +1,1 @@
-arr[i] or arr[j]
+v[i][j]

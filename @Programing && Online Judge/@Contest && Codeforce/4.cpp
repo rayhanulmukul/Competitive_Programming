@@ -19,41 +19,37 @@ using namespace std;
  
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define rng(x,y) uniform_int_distribution<int>(x,y)(rng)
-#define FOR(i,a,b) for (int i = (a); i < (b); ++i)
-#define F0R(i,a) FOR(i,0,a)
-#define ROF(i,a,b) for (int i = (b)-1; i >= (a); --i)
-#define R0F(i,a) ROF(i,0,a)
+#define F0R(i,a,b) for (int i = (a); i < (b); ++i)
+#define FOR(i,a) F0R(i,0,a)
+#define R0F(i,a,b) for (int i = (b)-1; i >= (a); --i)
+#define ROF(i,a) R0F(i,0,a)
 #define each(a,x) for (auto& a: x)
 const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n;
-    cin >> n;
-    string s, t;
-    cin >> s;
-    t = "";
-    int i = 0, x = 0, y = n-1;
-    while(i < n){
-        if(i%2 == 0){
-            if(s[x] == '0'){
-                t= s[x] + t;
-            }
-            else t += s[x];
-            //cout << "First " << s[x] << " " << t << en;
-            x++;
+    char ch[4][4];
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            cin >> ch[i][j];
         }
-        else{
-            if(s[y] == '0'){
-                t += s[y];
-            }else t = s[y] + t;
-            //cout << "last " << s[n-i-1] << " " << t << en;
-            y--;
-        }
-        i++;
     }
-    cout << t << en;
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            if(i+1 < 4 && j+1 < 4 && ch[i][j] == '#' && ch[i][j+1] == '#' && (ch[i+1][j] == '#' || ch[i+1][j+1] == '#')){
+                cout << "YES" << en;
+                return;
+            }
+            else if(i+1 < 4 && j+1 < 4 && ch[i][j] == '.' && ch[i][j+1] == '.' && (ch[i+1][j] == '.' || ch[i+1][j+1] == '.')){
+                cout << "YES" << en;
+                return;
+            }
+
+        }
+    }
+    cout << "NO" << en;
+    
 }
 int32_t main(){
     #ifndef DEBUG
@@ -61,7 +57,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
