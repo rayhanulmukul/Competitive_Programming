@@ -29,35 +29,65 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, x;
-    cin >> n;
-    int one = 0, two = 0, first = 0,second = 0, k, l;
-    FOR(i, n){
-        cin >> x;
-        if(x < 0){
-            two += x;
-            if(second == 0) second = abs(x);
-            k = x;
+    int n, m, c1 = 0;
+    cin >> n >> m;
+    int a, b, c;
+    map <int, int> m1;
+    FOR(i, m){
+        cin >> a >> b >> c;
+        if(m1[a] != 0){
+            int x = m1[a];
+            if(x == 1){
+                m1[b] = 2;
+                m1[c] = 3;
+            }
+            else if(x == 2){
+                m1[b] = 3;
+                m1[c] = 1;
+            }
+            else{
+                m1[b] = 1;
+                m1[c] = 2;
+            }
         }
-        else{one += x;
-            if(first == 0) first = x;
-            k = x;
+        else if(m1[b] != 0){
+            int x = m1[b];
+            if(x == 1){
+                m1[a] = 2;
+                m1[c] = 3;
+            }
+            else if(x == 2){
+                m1[a] = 3;
+                m1[c] = 1;
+            }
+            else{
+                m1[a] = 1;
+                m1[c] = 2;
+            }
+        }
+        else if(m1[c] != 0){
+            int x = m1[c];
+            if(x == 1){
+                m1[a] = 2;
+                m1[b] = 3;
+            }
+            else if(x == 2){
+                m1[a] = 3;
+                m1[b] = 1;
+            }
+            else{
+                m1[a] = 1;
+                m1[b] = 2;
+            }
+        }
+        else{
+            m1[a] = 1;
+            m1[b] = 2;
+            m1[c] = 3;
         }
     }
-    if(one == abs(two)){
-         if(first == second){
-            if(k > 0) cout << "second" << en;
-            else cout << "first" << en;
-        }
-        else if(first > second) cout << "first" << en;
-        else cout << "second" << en;
-    }
-    else if(one > abs(two)){
-        cout << "first" << en;
-    }
-    else cout << "second" << en;
+    FOR(i, n) cout << m1[i+1] << " ";
     
-   // cout << one << " " << abs(two) << en;
 }
 int32_t main(){
     #ifndef DEBUG

@@ -29,50 +29,26 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n;
+    int n, ans = 0;
     cin >> n;
-    string s;
-    cin >> s;
-    int x = s[s.size()-1] - '0';
-    if(x%2 == 0){
-        cout << "NO" << en;
-        return;
-    }
-    int y = 0, var;
-    x = 0;
     int arr[n];
-    int brr[n];
-
-    for(int i = 0; i < n; i++){
-        var = s[i] - '0';
-        x += var;
-        arr[i] = var;
-    }
-    for(int i = n; i < 2*n; i++){
-        var = s[i] - '0';
-        y += var;
-        brr[i-n] = var;
-    }
-    if(x == y){
-        cout << "NO" << en;
-        return;
+    FOR(i, n){
+        cin >> arr[i];
     }
     sort(arr, arr + n);
-    sort(brr, brr + n);
-    int c1 = 0, c = 0;
-    for(int i = 0; i < n; i ++){
-        if(arr[i] > brr[i]){
-            c++;
-        }
-        else if(arr[i] < brr[i]){
-            c1++;
-        }
+    for(int i = 0; i < n; i++){
+        if(i+1 < n && arr[i] == arr[i+1]) continue;
+        else if(arr[i] > i+1) ans++;
     }
-    if(c == n || c1 == n){
-        cout << "YES" << en;
-    }
-    else cout << "NO" << en;
+    cout << ans << en;
 
+
+    // int n;cin>>n;int arr[n];
+    // for (int i = 0; i < n; i++) cin>>arr[i];
+    // sort(arr,arr+n);
+    
+
+    
 }
 int32_t main(){
     #ifndef DEBUG
@@ -80,7 +56,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    //cin >> t;
+    cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }

@@ -28,54 +28,16 @@ const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
-void solve(int tt){
-    int n, x;
-    cin >> n;
-    int one = 0, two = 0, first = 0,second = 0, k, l;
-    vector <int> v1;
-    vector <int> v2;
-    FOR(i, n){
-        cin >> x;
-        if(x < 0){
-            two += x;
-            v1.push_back(abs(x));
-            k = x;
-        }
-        else{
-            one += x;
-            v2.push_back(x);
-            k = x;
-        }
-    }
-    sort(v1.begin(), v1.end());
-    sort(v2.begin(), v2.end());
+//What next permutation does
+//1. Always edit the array.
+//2. Returns false if the array is reverse
 
-    if(one == abs(two)){
-        int to = abs(k)*(n/2);
-        if(to == one){
-            if(k < 0) cout << "second" << en;
-            else cout << "first" << en; 
-        }
-        else{
-            for(int i = 0; i < max(v1.size(), v2.size()); i++){
-                if(v1[i] > v2[i]){
-                    cout << "second" << en;
-                    return;
-                }
-                else{
-                    cout << "first" << en;
-                    return;
-                }
-            }
-            
-        }
-    }
-    else if(one > abs(two)){
-        cout << "first" << en;
-    }
-    else cout << "second" << en;
-    
-   // cout << one << " " << abs(two) << en;
+void solve(int tt){ 
+    int n; cin >> n;
+    vector<int>arr(n); for(auto &a: arr) cin >> a;
+    do{
+
+    }while(next_permutation(arr.begin(), arr.end()));
 }
 int32_t main(){
     #ifndef DEBUG
@@ -83,7 +45,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }

@@ -29,37 +29,19 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n;
-    cin >> n;
-    int arr[n];
-    map <int, int> m1;
-    FOR(i, n){
-        cin >> arr[i];
-        m1[arr[i]]++;
+    int n, m;
+    cin >> n >> m;
+    for(int i = 0;i < m; i++){
+        
     }
-    int mi = INT_MAX;
-    for(auto it:m1){
-        int c = 0;
-        int x = it.first;
-        for(auto it1:m1){
-            if(x != it1.first && (x > it1.first || it1.first > 2*x)){
-                c += it1.second;
-            }
-        }
-        mi = min(mi, c);
-    }
-    cout << mi << en;
-
 }
 int32_t main(){
     #ifndef DEBUG
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
     #endif
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
     int t = 1;
-    //cin >> t;
+    cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
