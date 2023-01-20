@@ -5,6 +5,7 @@
         "iostream": "cpp",
         "random": "cpp",
         "*.tcc": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "numeric": "cpp"
     }
 }

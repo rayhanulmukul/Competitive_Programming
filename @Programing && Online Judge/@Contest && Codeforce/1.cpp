@@ -29,11 +29,15 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, m;
-    cin >> n >> m;
-    for(int i = 0;i < m; i++){
-        
+    int n, ans = 0, c = 0;
+    cin >> n;
+    int arr[n];
+    FOR(i, n){
+        cin >> arr[i];
+        if(arr[i]== 0) ans++;
     }
+    if(ans %2 == 0) cout << "YES" << en;
+    else cout << "NO" << en;
 }
 int32_t main(){
     #ifndef DEBUG

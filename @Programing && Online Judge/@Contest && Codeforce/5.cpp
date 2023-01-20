@@ -28,16 +28,8 @@ const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
 
-//What next permutation does
-//1. Always edit the array.
-//2. Returns false if the array is reverse
-
-void solve(int tt){ 
-    int n; cin >> n;
-    vector<int>arr(n); for(auto &a: arr) cin >> a;
-    do{
-
-    }while(next_permutation(arr.begin(), arr.end()));
+void solve(int tt){
+    
 }
 int32_t main(){
     #ifndef DEBUG
@@ -45,7 +37,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
