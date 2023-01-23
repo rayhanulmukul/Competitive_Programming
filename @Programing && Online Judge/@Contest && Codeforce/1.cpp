@@ -27,17 +27,61 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 const int MOD = 1e9+7; // 998244353;
 const int MAX = 2e5+5;
 const int N = 1005;
+void bfs(int a, int b){
+    map <int, int> m1;
+    map <int, int> m2;
+    queue <int> q1;
+    vector <int> v1;
 
-void solve(int tt){
-    int n, ans = 0, c = 0;
-    cin >> n;
-    int arr[n];
-    FOR(i, n){
-        cin >> arr[i];
-        if(arr[i]== 0) ans++;
+    q1.push(a);
+    int flag = 0;
+    while(!q1.empty()){
+        int u, v, u1, v1;
+        u = q1.front();
+        q1.pop();
+
+        m1[u] = 1;
+        v = u*2;
+        if(m1[v] == 0 && v <= b){
+            q1.push(v);
+            m1[v] = 1;
+            m2[v] = u;
+            if(v == b){
+                flag = 1;
+                break;
+            }
+        }
+        v1 = u*10 + 1;
+        if(m1[v1] == 0 && v1 <= b){
+            q1.push(v1);
+            m1[v1] = 1;
+            m2[v1] = u;
+            if(v1 == b){
+                flag = 1;
+                break;
+            }
+        }
     }
-    if(ans %2 == 0) cout << "YES" << en;
-    else cout << "NO" << en;
+    if(flag){
+        cout << "YES" << endl;
+        int x = b;
+        while(x != a){
+            v1.pb(x);
+            x = m2[x];
+        }
+        v1.pb(a);
+        reverse(v1.begin(), v1.end());
+        for(int i = 0; i < v1.size(); i++){
+            cout << v1[i] << gap;
+        }
+        cout << endl;
+    }
+    else cout << "NO" << endl;
+}
+void solve(int tt){
+    int a, b;
+    cin >> a >> b;
+    bfs(a, b);
 }
 int32_t main(){
     #ifndef DEBUG
@@ -45,7 +89,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    cin >> t;
+    //cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }

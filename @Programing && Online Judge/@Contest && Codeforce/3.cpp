@@ -29,25 +29,6 @@ const int MAX = 2e5+5;
 const int N = 1005;
 
 void solve(int tt){
-    int n, ans = 0;
-    cin >> n;
-    int arr[n];
-    FOR(i, n){
-        cin >> arr[i];
-    }
-    sort(arr, arr + n);
-    for(int i = 0; i < n; i++){
-        if(i+1 < n && arr[i] == arr[i+1]) continue;
-        else if(arr[i] > i+1) ans++;
-    }
-    cout << ans << en;
-
-
-    // int n;cin>>n;int arr[n];
-    // for (int i = 0; i < n; i++) cin>>arr[i];
-    // sort(arr,arr+n);
-    
-
     
 }
 int32_t main(){

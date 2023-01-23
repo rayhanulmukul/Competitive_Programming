@@ -24,32 +24,20 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 #define R0F(i,a,b) for (int i = (b)-1; i >= (a); --i)
 #define ROF(i,a) R0F(i,0,a)
 #define each(a,x) for (auto& a: x)
-const int MOD = 1e9+7; // 998244353;
+const int MOD = 1000000007; // 998244353;
 const int MAX = 2e5+5;
-const int N = 1005;
-
+const int N = 100005;
 void solve(int tt){
-    char ch[4][4];
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            cin >> ch[i][j];
+    int n;
+    cin >> n;
+    if(n == 1) cout << 0 << en;
+    else{
+        int ans = 1;
+        for(int i = 1; i <= n; i++){
+            ans = ((ans%MOD)*i)%MOD;
         }
+        cout << (((n*(n-1))%MOD)*ans)%MOD << en;
     }
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            if(i+1 < 4 && j+1 < 4 && ch[i][j] == '#' && ch[i][j+1] == '#' && (ch[i+1][j] == '#' || ch[i+1][j+1] == '#')){
-                cout << "YES" << en;
-                return;
-            }
-            else if(i+1 < 4 && j+1 < 4 && ch[i][j] == '.' && ch[i][j+1] == '.' && (ch[i+1][j] == '.' || ch[i+1][j+1] == '.')){
-                cout << "YES" << en;
-                return;
-            }
-
-        }
-    }
-    cout << "NO" << en;
-    
 }
 int32_t main(){
     #ifndef DEBUG
@@ -57,7 +45,7 @@ int32_t main(){
         cin.tie(NULL);
     #endif
     int t = 1;
-    //cin >> t;
+    cin >> t;
     for(int i = 1; i <= t; i++){
         solve(i);
     }
