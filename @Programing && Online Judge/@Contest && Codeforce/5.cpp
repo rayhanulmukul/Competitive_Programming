@@ -1,81 +1,38 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
-string multiply(string num1, string num2) 
-{
-    int n1 = num1.size();
-    int n2 = num2.size();
-    if (n1 == 0 || n2 == 0)
-        return "0";
 
-    // will keep the result number in vector
-    // in reverse order
-    vector<int> result(n1 + n2, 0);
+struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode() : val(0), left(nullptr), right(nullptr) {}
+      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+    bool isSameTree(TreeNode* root1, TreeNode* root2) {
+        queue <TreeNode*> q1;
+        queue <TreeNode*> q2;
+        q1.push(root1);
+        q1.push(root2);
+        while(!q1.empty() and !q2.empty()){
+            auto node1 = q1.front();
+            auto node2 = q2.front();
+            q1.pop();
+            q2.pop();
+            if(node1 == NULL or node2 == NULL){
+                if(node1 != node2) return false;
+                continue;
+            }
+            if(node1 -> val != node2 -> val) return false;
+            q1.push(node1 -> left);
+            q1.push(node1 -> right);
 
-    // Below two indexes are used to find positions
-    // in result.
-    int i_n1 = 0;
-    int i_n2 = 0;
-
-    // Go from right to left in num1
-    for (int i=n1-1; i>=0; i--)
-    {
-        int carry = 0;
-        int n1 = num1[i] - '0';
-
-        // To shift position to left after every
-        // multiplication of a digit in num2
-        i_n2 = 0;
-
-        // Go from right to left in num2
-        for (int j=n2-1; j>=0; j--)
-        {
-            // Take current digit of second number
-            int n2 = num2[j] - '0';
-
-            // Multiply with current digit of first number
-            // and add result to previously stored result
-            // at current position.
-            int sum = n1*n2 + result[i_n1 + i_n2] + carry;
-
-            // Carry for next iteration
-            carry = sum/10;
-
-            // Store result
-            result[i_n1 + i_n2] = sum % 10;
-
-            i_n2++;
+            q2.push(node2 -> left);
+            q2.push(node2 -> right);
         }
-
-        // store carry in next cell
-        if (carry > 0)
-            result[i_n1 + i_n2] += carry;
-
-        // To shift position to left after every
-        // multiplication of a digit in num1.
-        i_n1++;
+        return true;
     }
-
-    // ignore '0's from the right
-    int i = result.size() - 1;
-    while (i>=0 && result[i] == 0)
-        i--;
-
-    // If all were '0's - means either both or
-    // one of num1 or num2 were '0'
-    if (i == -1)
-        return "0";
-
-    // generate the result string
-    string s = "";
-    while (i >= 0)
-        s += std::to_string(result[i--]);
-
-    return s;
-}
-
-int main()
-{
-    string num1 = "1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991";
-    string num2 = "987654321098765432109876543210987654321098765432109876543210987654321098765432109876543210987654321098765432
+};
