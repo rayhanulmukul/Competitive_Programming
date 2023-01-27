@@ -31,16 +31,8 @@ const int N = 1005;
 void solve(int tt){
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-    if(s == "1" or s == "10") cout << "NO" << en;
-    else{
-        int c = 0;
-        for(int i = 0; i < n; i++){
-            if(s[i] == '1') c++;
-        }
-        if(c <= 3) cout << "YES" << en;
-        else cout << "NO" << en;
+    FOR(i, n){
+        cout << i << en;
     }
 }
 int32_t main(){
