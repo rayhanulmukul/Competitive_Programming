@@ -1,9 +1,6 @@
 /*بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ*/
-#include "ext/pb_ds/assoc_container.hpp"
-#include "ext/pb_ds/tree_policy.hpp"
 #include <bits/stdc++.h>
 using namespace std;
-using namespace __gnu_pbds;
 
 #define ll long long int
 #define int ll
@@ -32,7 +29,7 @@ int dx[] = {0, 0, +1, -1, -1, +1, -1, +1};
 int dy[] = {+1, -1, 0, 0, +1, +1, -1, -1};
 
 void solve(int tt){
-    
+    cout << tt << endl;
 }
 int32_t main(){
 #ifndef DEBUG
