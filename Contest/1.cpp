@@ -29,16 +29,7 @@ int dx[] = {0, 0, +1, -1, -1, +1, -1, +1};
 int dy[] = {+1, -1, 0, 0, +1, +1, -1, -1};
 
 void solve(int tt){
-    int n;
-    cin >> n;
-    vector <int> a(n);
-    int sum = 0;
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
-        sum += a[i];
-    }
-    int ans = sum / n;
-    cout << ans << en;
+    cout << tt << endl;
 }
 int32_t main(){
 #ifndef DEBUG
